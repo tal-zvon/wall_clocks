@@ -1,7 +1,7 @@
 Wall Clock
 ==========
 
-Usage
+Install
 -----
 
 Step 1::
@@ -21,3 +21,11 @@ Step 5::
 	$ crontab -e
 		*/1 * * * * /bin/bash -c '/home/[USER]/Pictures/[wall clock folder name]/wall_clocks.sh'
 	Note: Replace [USER] with your username and [wall clock folder name] with the name of the folder you extracted
+
+Uninstall
+---------
+
+Step 1::
+	Run "crontab -e" and delete the line you added during setup
+Step 2::
+	Delete the clock folder from ~/Pictures
