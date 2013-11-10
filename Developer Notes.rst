@@ -23,3 +23,9 @@ To Do::
 
 	Add a bit of code to rc.local to update the script on boot so that it doesn't take an entire minute (worst case) to update the clock
 
+	I thought about making it update once a second (using "sleep 1" instead of cron) but this introduces several problems:
+		Cron self synchronizes, because it always runs every minute on the minute. sleep 1 will keep getting more and more offset as the time it takes for the script to run adds up
+		Every time there's a wallpaper update, there's a tiny disturbance on the desktop. It's like a half a second of lag, that doesn't really effect anything
+			Updating the wallpaper every second, with a half second of lag each time means 50% of the time, the desktop will be lagging
+
+	Can I just have the desktop play a video, and turn the images into a video stream? That would probably take a lot more resources, but might be more smooth as there is no transition
