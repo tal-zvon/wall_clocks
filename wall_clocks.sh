@@ -4,7 +4,7 @@ CURRENT_FOLDER=$(dirname $0)
 
 MONTH=$(echo -n "month"; date +"%m" | sed 's/^0//g' | awk '{printf $0}'; echo .png)
 DAY=$(echo -n "day"; date +"%e" | tr -d ' ' | awk '{printf $0}'; echo .png)
-HOUR=$(echo -n "hour"; echo -n "$((`date +"%l"` * 5 + (`date +"%M"` / 12)))"; echo .png)
+HOUR=$(echo -n "hour"; echo -n "$((`date +"%l" | sed 's/^0//g'` * 5 + (`date +"%M" | sed 's/^0//g'` / 12)))"; echo .png)
 MINUTE=$(echo -n "minute"; date +"%M" | sed 's/^0//g' | awk '{printf $0}'; echo .png)
 
 #echo "|$MONTH|"
