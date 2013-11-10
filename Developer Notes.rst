@@ -7,3 +7,11 @@ Known Bugs::
 			The only way I can think of is png metadata
 				Basically, when I create a pre-gen.png file, label it with the hour, minute, day, and month in metadata
 				Then before I load it, figure out the current hour, minute day and month, and compare it to the pre_gen.png file
+
+To Do::
+
+	Test with other clocks from http://www.vladstudio.com/wallpaperclocks/browse.php
+
+	Test with other OS's
+		Will almost definately not work because they don't have mate, and the gsettings line I use to set the wallpaper uses mate in its path
+			Easily fixed by using "gsettings set org.gnome.desktop.background picture-uri file://$PATH_TO_FILE" instead
