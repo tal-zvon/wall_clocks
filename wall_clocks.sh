@@ -12,9 +12,10 @@ MINUTE=$(echo -n "minute"; date +"%M" | sed 's/^0//g' | awk '{printf $0}'; echo 
 #echo "|$HOUR|"
 #echo "|$MINUTE|"
 
-composite $CURRENT_FOLDER/$MONTH $CURRENT_FOLDER/bg.jpg $CURRENT_FOLDER/out.png
-composite $CURRENT_FOLDER/$DAY $CURRENT_FOLDER/out.png $CURRENT_FOLDER/out.png
-composite $CURRENT_FOLDER/$MINUTE $CURRENT_FOLDER/out.png $CURRENT_FOLDER/out.png
-composite $CURRENT_FOLDER/$HOUR $CURRENT_FOLDER/out.png $CURRENT_FOLDER/out.png
+composite $CURRENT_FOLDER/$MONTH $CURRENT_FOLDER/bg.jpg $CURRENT_FOLDER/out_temp.png
+composite $CURRENT_FOLDER/$DAY $CURRENT_FOLDER/out_temp.png $CURRENT_FOLDER/out_temp.png
+composite $CURRENT_FOLDER/$MINUTE $CURRENT_FOLDER/out_temp.png $CURRENT_FOLDER/out_temp.png
+composite $CURRENT_FOLDER/$HOUR $CURRENT_FOLDER/out_temp.png $CURRENT_FOLDER/out_temp.png
+mv $CURRENT_FOLDER/out_temp.png $CURRENT_FOLDER/out.png
 
-gsettings set org.mate.background picture-filename `readlink -f $CURRENT_FOLDER/out.png`
+gsettings set org.mate.background picture-filename `readlink -f $CURRENT_FOLDER/out.png` &>/dev/null
