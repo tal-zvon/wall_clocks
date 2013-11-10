@@ -11,7 +11,7 @@ else
 	#Figure out the file names of the current time that should be combined
 	MONTH=$(echo -n "month"; date +"%m" | sed 's/^0//g' | awk '{printf $0}'; echo .png)
 	DAY=$(echo -n "day"; date +"%e" | tr -d ' ' | awk '{printf $0}'; echo .png)
-	HOUR=$(echo -n "hour"; echo -n "$((`date +"%l" | sed 's/^0//g'` * 5 + (`date +"%M" | sed 's/^0//g'` / 12)))"; echo .png)
+	HOUR=$(echo -n "hour"; echo -n "$((`TEST=$(date +"%l" | sed 's/^0//g'); [[ $TEST == 12 ]] && echo 0 || echo $TEST` * 5 + (`date +"%M" | sed 's/^0//g'` / 12)))"; echo .png)
 	MINUTE=$(echo -n "minute"; date +"%M" | sed 's/^0//g' | awk '{printf $0}'; echo .png)
 
 	#Generate current time's wallpaper
@@ -27,7 +27,7 @@ fi
 #Figure out the file names of the (current time + 1 minute) that should be combined
 MONTH_PLUS_1=$(echo -n "month"; date --date="1 minute" +"%m" | sed 's/^0//g' | awk '{printf $0}'; echo .png)
 DAY_PLUS_1=$(echo -n "day"; date --date="1 minute" +"%e" | tr -d ' ' | awk '{printf $0}'; echo .png)
-HOUR_PLUS_1=$(echo -n "hour"; echo -n "$((`date --date="1 minute" +"%l" | sed 's/^0//g'` * 5 + (`date --date="1 minute" +"%M" | sed 's/^0//g'` / 12)))"; echo .png)
+HOUR_PLUS_1=$(echo -n "hour"; echo -n "$((`TEST=$(date --date="1 minute" +"%l" | sed 's/^0//g'); [[ $TEST == 12 ]] && echo 0 || echo $TEST` * 5 + (`date --date="1 minute" +"%M" | sed 's/^0//g'` / 12)))"; echo .png)
 MINUTE_PLUS_1=$(echo -n "minute"; date --date="1 minute" +"%M" | sed 's/^0//g' | awk '{printf $0}'; echo .png)
 
 #Generate (current time + 1 minute)'s wallpaper
